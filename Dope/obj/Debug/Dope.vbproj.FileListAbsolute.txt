@@ -1,0 +1,42 @@
+E:\Visual\DOPE\Dope\Dope\bin\Debug\Dope.exe.config
+E:\Visual\DOPE\Dope\Dope\bin\Debug\Dope.exe
+E:\Visual\DOPE\Dope\Dope\bin\Debug\Dope.pdb
+E:\Visual\DOPE\Dope\Dope\bin\Debug\Dope.xml
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.Resources.resources
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.vbproj.GenerateResource.Cache
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.exe
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.xml
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.pdb
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.vbprojResolveAssemblyReference.cache
+E:\Visual\DOPE\Dope\Dope\bin\Debug\DopeDB.accdb
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.V_Intro.resources
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.V_Main.resources
+E:\Visual\DOPE\Dope\Dope\obj\Debug\Dope.V_Settings.resources
+E:\Dope\Dope\bin\Debug\Dope.exe.config
+E:\Dope\Dope\obj\Debug\Dope.exe
+E:\Dope\Dope\obj\Debug\Dope.xml
+E:\Dope\Dope\obj\Debug\Dope.pdb
+E:\Dope\Dope\bin\Debug\DopeDB.accdb
+E:\Dope\Dope\bin\Debug\Dope.exe
+E:\Dope\Dope\bin\Debug\Dope.pdb
+E:\Dope\Dope\bin\Debug\Dope.xml
+E:\Dope\Dope\obj\Debug\Dope.vbprojResolveAssemblyReference.cache
+E:\Dope\Dope\obj\Debug\Dope.V_Intro.resources
+E:\Dope\Dope\obj\Debug\Dope.V_Main.resources
+E:\Dope\Dope\obj\Debug\Dope.Resources.resources
+E:\Dope\Dope\obj\Debug\Dope.V_Settings.resources
+E:\Dope\Dope\obj\Debug\Dope.vbproj.GenerateResource.Cache
+E:\dope-master\Dope\obj\Debug\Dope.vbprojResolveAssemblyReference.cache
+E:\dope-master\Dope\obj\Debug\Dope.Resources.resources
+E:\dope-master\Dope\obj\Debug\Dope.V_Settings.resources
+E:\dope-master\Dope\obj\Debug\Dope.vbproj.GenerateResource.Cache
+E:\dope-master\Dope\obj\Debug\Dope.Salida.resources
+E:\dope-master\Dope\obj\Debug\Dope.FrmIntro.resources
+E:\dope-master\Dope\bin\Debug\Fifa Wars.exe.config
+E:\dope-master\Dope\obj\Debug\Fifa Wars.xml
+E:\dope-master\Dope\bin\Debug\Fifa Wars.exe
+E:\dope-master\Dope\bin\Debug\Fifa Wars.pdb
+E:\dope-master\Dope\bin\Debug\Fifa Wars.xml
+E:\dope-master\Dope\obj\Debug\Fifa Wars.exe
+E:\dope-master\Dope\obj\Debug\Fifa Wars.pdb
+E:\dope-master\Dope\obj\Debug\Dope.Main.resources
