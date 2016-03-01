@@ -22,14 +22,14 @@ Partial Class Salida
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.ChartSalida = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.LblSalidaNom = New System.Windows.Forms.Label()
         Me.LblSalidaGana = New System.Windows.Forms.Label()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ChartSalida, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -42,21 +42,20 @@ Partial Class Salida
         Me.Label1.TabIndex = 30
         Me.Label1.Text = "Evolución de la partida:"
         '
-        'Chart1
+        'ChartSalida
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
-        Me.Chart1.Location = New System.Drawing.Point(26, 126)
-        Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Size = New System.Drawing.Size(300, 300)
-        Me.Chart1.TabIndex = 32
-        Me.Chart1.Text = "Chart1"
+        ChartArea1.Name = "ChartArea1"
+        Me.ChartSalida.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.ChartSalida.Legends.Add(Legend1)
+        Me.ChartSalida.Location = New System.Drawing.Point(26, 126)
+        Me.ChartSalida.Name = "ChartSalida"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.ChartSalida.Series.Add(Series1)
+        Me.ChartSalida.Size = New System.Drawing.Size(300, 300)
+        Me.ChartSalida.TabIndex = 32
         '
         'LblSalidaNom
         '
@@ -85,17 +84,17 @@ Partial Class Salida
         Me.ClientSize = New System.Drawing.Size(352, 446)
         Me.Controls.Add(Me.LblSalidaGana)
         Me.Controls.Add(Me.LblSalidaNom)
-        Me.Controls.Add(Me.Chart1)
+        Me.Controls.Add(Me.ChartSalida)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Salida"
         Me.Text = "Fifa Wars"
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ChartSalida, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label1 As Label
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents ChartSalida As DataVisualization.Charting.Chart
     Friend WithEvents LblSalidaGana As Label
     Friend WithEvents LblSalidaNom As Label
 End Class

@@ -49,6 +49,9 @@ Partial Class Main
         Me.CheckGanar = New System.Windows.Forms.CheckBox()
         Me.CheckTurnos = New System.Windows.Forms.CheckBox()
         Me.LblDeuda = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -57,6 +60,9 @@ Partial Class Main
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label8)
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.LstPrecio)
         Me.GroupBox2.Controls.Add(Me.LstCantidad)
         Me.GroupBox2.Controls.Add(Me.LstCategorias)
@@ -72,27 +78,27 @@ Partial Class Main
         '
         Me.LstPrecio.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LstPrecio.FormattingEnabled = True
-        Me.LstPrecio.Location = New System.Drawing.Point(148, 22)
+        Me.LstPrecio.Location = New System.Drawing.Point(148, 46)
         Me.LstPrecio.Name = "LstPrecio"
-        Me.LstPrecio.Size = New System.Drawing.Size(60, 95)
+        Me.LstPrecio.Size = New System.Drawing.Size(60, 82)
         Me.LstPrecio.TabIndex = 2
         '
         'LstCantidad
         '
         Me.LstCantidad.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LstCantidad.FormattingEnabled = True
-        Me.LstCantidad.Location = New System.Drawing.Point(82, 22)
+        Me.LstCantidad.Location = New System.Drawing.Point(82, 46)
         Me.LstCantidad.Name = "LstCantidad"
-        Me.LstCantidad.Size = New System.Drawing.Size(60, 95)
+        Me.LstCantidad.Size = New System.Drawing.Size(60, 82)
         Me.LstCantidad.TabIndex = 1
         '
         'LstCategorias
         '
         Me.LstCategorias.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LstCategorias.FormattingEnabled = True
-        Me.LstCategorias.Location = New System.Drawing.Point(16, 22)
+        Me.LstCategorias.Location = New System.Drawing.Point(16, 46)
         Me.LstCategorias.Name = "LstCategorias"
-        Me.LstCategorias.Size = New System.Drawing.Size(60, 95)
+        Me.LstCategorias.Size = New System.Drawing.Size(60, 82)
         Me.LstCategorias.TabIndex = 0
         Me.LstCategorias.Tag = "Categorías"
         '
@@ -295,7 +301,7 @@ Partial Class Main
         Me.StaTurno.AutoToolTip = True
         Me.StaTurno.Font = New System.Drawing.Font("Trebuchet MS", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StaTurno.Name = "StaTurno"
-        Me.StaTurno.Size = New System.Drawing.Size(58, 18)
+        Me.StaTurno.Size = New System.Drawing.Size(56, 18)
         Me.StaTurno.Text = "StaTurno"
         '
         'CheckGanar
@@ -326,6 +332,36 @@ Partial Class Main
         Me.LblDeuda.TabIndex = 38
         Me.LblDeuda.Text = "/ total"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(14, 27)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(62, 13)
+        Me.Label3.TabIndex = 39
+        Me.Label3.Text = "Categorías"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(82, 27)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(54, 13)
+        Me.Label7.TabIndex = 40
+        Me.Label7.Text = "Cantidad"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(149, 29)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(38, 13)
+        Me.Label8.TabIndex = 41
+        Me.Label8.Text = "Precio"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -349,6 +385,7 @@ Partial Class Main
         Me.Name = "Main"
         Me.Text = "Main"
         Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -387,4 +424,7 @@ Partial Class Main
     Friend WithEvents CheckGanar As CheckBox
     Friend WithEvents CheckTurnos As CheckBox
     Friend WithEvents LblDeuda As Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class

@@ -2,6 +2,8 @@
 
     'Clases para el historico
     Dim usuarioActivo As Usuario
+    'Recogemos la instancia de la base de datos
+    Private baseDatos As BaseDatos = BaseDatos.Instance()
 
     Private Sub Historico_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -16,5 +18,10 @@
             LblSalidaNom.Text = Me.Tag.ToString
             LblSalidaGana.Visible = True
         End If
+
+        'Linkamos la g´rafica a la base de datos
+        ChartSalida.DataSource = baseDatos.getDtsHistorico()
+
     End Sub
+
 End Class

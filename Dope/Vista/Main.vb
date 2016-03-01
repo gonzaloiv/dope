@@ -1,15 +1,15 @@
 ﻿Public Class Main
     'CLASES
     'Usuario y lugar del que se utilizan los datos
-    Dim usuarioActivo As Usuario
-    Dim lugarActivo As Lugar
+    Private usuarioActivo As Usuario
+    Private lugarActivo As Lugar
     'Controlador
-    Dim controlador As Controlador
+    Private controlador As Controlador
     'Archivo de opciones
-    Dim opciones As Opciones = Opciones.Instance
+    Private opciones As Opciones = opciones.Instance
     'PROPIOS
     'Parámetro para el precio total de la operación, lo modifica el combo de cantidad y el de categorías
-    Dim precioTotalTransaccion As Integer
+
 
     'INICIO
     'Cargado inicial
@@ -22,14 +22,19 @@
     'EVENTOS TURNO
     'Botón de turno
     Private Sub BtnTurno_Click(sender As Object, e As EventArgs) Handles BtnTurno.Click
+
         'Método de paso de jugador
         controlador.cambiarUsuario()
+
         'Si el controlador acaba la partida se cierra el formulario
         'Puede ser en cambio de turno o en cambio de jugador
         If (controlador.getFinPartida()) Then
             Me.Dispose()
         End If
+
+        'Actualización de la vista
         actualizarDatosVista()
+
     End Sub
     'Combo de lugares
     Private Sub CmbLugares_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbLugares.SelectedIndexChanged
@@ -42,28 +47,36 @@
     End Sub
 
     'OPERACIONES
+
     'Botón de confirmar transacción
     Private Sub BtnConfirmar_Click(sender As Object, e As EventArgs) Handles BtnConfirmar.Click
+
         'COMPRA
         If RadioFichar.Checked Then
             'Se resta el precio total al inventario del usuario
-            usuarioActivo.setDinero(10)
-            'usuarioActivo.setCantidad(CmbCategorias.SelectedIndex, usuarioActivo.ge)
-            'lugarActivo()
+            controlador.comprar()
         End If
+
         'VENTA
         If RadioVender.Checked Then
             'Se suma el precio total al inventario del usuario
-            usuarioActivo.setDinero(usuarioActivo.getDinero() + (CmbCantidad.SelectedValue * lugarActivo.getPrecio(CmbCategorias.SelectedIndex)))
-
+            usuarioActivo.setDinero(UtilMain.vender())
         End If
+
         'Actualizamos los datos una vez cambiados
         actualizarDatosVista()
+
         'Impedimos más compras
         BtnConfirmar.Enabled = False
+
+        'Impedimos movimientos de lugar
+        CmbLugares.Enabled = False
+
     End Sub
     'Combo de categorías para comprar o vender, altera el combo de cantidad según la categoría seleccionada
     Private Sub CmbCategorias_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbCategorias.SelectedIndexChanged
+        'Variable para el total
+        Dim precioTotalTransaccion As Integer
         'Resetea y activa el combo de cantidad
         CmbCantidad.Items.Clear()
         CmbCantidad.Enabled = True
@@ -97,7 +110,7 @@
     End Sub
     Private Sub CmbCantidad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbCantidad.SelectedIndexChanged
         'precioTotalTransaccion = CmbCantidad.SelectedValue * lugarActivo.getPrecio(CmbCategorias.SelectedIndex)
-        MsgBox(precioTotalTransaccion)
+
     End Sub
     Private Sub RadioVender_CheckedChanged(sender As Object, e As EventArgs) Handles RadioVender.CheckedChanged
         CmbCantidad.Enabled = False
@@ -109,6 +122,7 @@
     End Sub
 
     'DATOS
+
     'INICIO
     Private Sub iniciarControladoresEstaticos()
         'Iniciar combo lugares n relación a los nombres dados en las opciones
@@ -138,7 +152,7 @@
         'Label de turno adaptado a los usuarios
         StaTurno.Text = "Turno: " & controlador.getNTurno() + 1
 
-        'Combobox de lugares activo
+        'Combobox de lugares activo si no se ha efectuado ninguna compra
         CmbLugares.Enabled = True
 
         'El Combobox de cantidad aparece no enabled
@@ -148,7 +162,7 @@
         BtnConfirmar.Enabled = True
 
     End Sub
-    'Usuario activo
+    'Datos usuario activo
     Private Sub actualizarDatosUsuarioActivo()
 
         usuarioActivo = controlador.getUsuarioActivo()
@@ -159,7 +173,7 @@
         LblDineroUsuario.Text = usuarioActivo.getDinero()
 
     End Sub
-    'Lugar activo
+    'Datos lugar activo
     Private Sub actualizarDatosLugarActivo()
 
         lugarActivo = controlador.getLugarActivo()

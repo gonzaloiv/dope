@@ -18,9 +18,9 @@
     'Lista de lugares
     Private lugares(4) As Lugar
     'Archivo de opciones
-    Private opciones As Opciones = Opciones.Instance
+    Private opciones As Opciones = opciones.Instance()
     'Base de datos
-    Private baseDatos As New BaseDatos
+    Private baseDatos As BaseDatos = baseDatos.Instance()
 
     'FORMULARIOS
     'Formulario final
@@ -33,17 +33,9 @@
         For indice As Integer = 0 To 4
             lugares(indice) = New Lugar(opciones.getNomLugar(indice))
             'Aquí se dan valores para las cantidades y los precios
-
-            'Creación de ratios para personalizar los precios de cada lugar
-            For index As Integer = 0 To 4
-                'Ratios para la cantidad aleatorios del 1 al 10
-                lugares(indice).setRatioCantidad(index, CInt(Math.Ceiling(Rnd() * 10)))
-            Next
-            For index As Integer = 0 To 4
-                'Ratios para el precio aleatorios del 1 al 10
-                lugares(indice).setRatioPrecio(index, CInt(Math.Ceiling(Rnd() * 10)) + 1)
-            Next
         Next
+
+        'Muestra los lugares por primera vez
         actualizarDatosLugares()
 
         'Creación de los usuarios
@@ -53,28 +45,6 @@
         Next
 
     End Sub
-
-    'GETTERS
-    Public Function getNUsuarioActivo()
-        Return nUsuarioActivo
-    End Function
-    Public Function getUsuarioActivo()
-        Return usuarios(nUsuarioActivo)
-    End Function
-    Public Function getLugarActivo()
-        Return lugares(usuarios(nUsuarioActivo).getLugar())
-    End Function
-    Public Function getNTurno()
-        Return nTurno
-    End Function
-    Public Function getFinPartida()
-        Return finPartida
-    End Function
-    'SETTERS
-    Public Sub setUsuario(indice As Integer, usuario As Usuario)
-        usuarios(indice) = usuario
-    End Sub
-
 
     'GESTIÓN DOS DE TURNO
     'Cambio de jugador
@@ -95,6 +65,9 @@
 
     'Cambio de turno 
     Private Sub pasarTurno()
+        '**
+        '** HAY QUE IMPLEMENTAR LA CLASE BaseDatos ANTES
+        '**
         'Guardar Histórico en la base de datos
         'baseDatos.insertarTurno(nTurno, usuarios)
 
@@ -103,25 +76,28 @@
 
         'Llamada a métodos que alteran los ratios de precios y cantidades
         gestionEventos()
+
         'Actualizar valores de lugares 
         actualizarDatosLugares()
+
     End Sub
 
     'GESTION DE DATOS
     Private Sub actualizarDatosLugares()
-        Dim lugar As Lugar
         'Para cada objeto de la clase lugar
         For indice As Integer = 0 To 4
-            lugar = lugares(indice)
-            'Para cada valor de cantidad lo relacionamos con su ratio
-            For index As Integer = 0 To 4
-                lugar.setCantidad(index, 10 * lugar.getRatioCantidad(index))
-            Next
-            'Para cada valor de precio lo relacionamos con su ratio
-            For index As Integer = 0 To 4
-                lugar.setPrecio(index, 10 * lugar.getRatioPrecio(index) / 3)
-            Next
+            lugares(indice).setPrecios()
         Next
+    End Sub
+
+    'GESTION DE TRANSACCIONES
+    'Comprar
+    Public Sub comprar()
+        usuarios(nUsuarioActivo).setDinero(1)
+    End Sub
+    'Vender
+    Public Sub vender()
+        usuarios(nUsuarioActivo).setDinero(1)
     End Sub
 
     'GESTIÓN DE EVENTOS
@@ -145,4 +121,28 @@
             MsgBox("T'ol pescao vendío!")
         End If
     End Sub
+
+
+    'UTILIDADES
+    'GETTERS
+    Public Function getNUsuarioActivo()
+        Return nUsuarioActivo
+    End Function
+    Public Function getUsuarioActivo()
+        Return usuarios(nUsuarioActivo)
+    End Function
+    Public Function getLugarActivo()
+        Return lugares(usuarios(nUsuarioActivo).getLugar())
+    End Function
+    Public Function getNTurno()
+        Return nTurno
+    End Function
+    Public Function getFinPartida()
+        Return finPartida
+    End Function
+    'SETTERS
+    Public Sub setUsuario(indice As Integer, usuario As Usuario)
+        usuarios(indice) = usuario
+    End Sub
+
 End Class

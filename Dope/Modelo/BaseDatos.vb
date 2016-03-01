@@ -1,5 +1,7 @@
 ﻿Imports System.Data.OleDb
-Public Class BaseDatos
+Public NotInheritable Class BaseDatos
+    'Instancia de la clase
+    Private Shared instancia = Nothing
     'Conexión
     Private conexion As OleDbConnection
     'DataAdapters
@@ -8,8 +10,13 @@ Public Class BaseDatos
     Private dtsHistorico As DataSet
     'CommandBuilders
     Private cbHistorico As OleDbCommandBuilder
+    'Instancia de las opciones
+    Private opciones As Opciones = opciones.Instance
 
-    Public Sub New()
+    'CONSTRUCTORES
+    'Constructor de la clase Singleton
+    Private Sub New()
+
         conexion = New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source='DopeDB.accdb'")
 
         'Inicialización de los datos para la tabla histórico
@@ -17,9 +24,21 @@ Public Class BaseDatos
         'dtaHistorico.Fill(dtsHistorico, "Historico")
         cbHistorico = New OleDbCommandBuilder(dtaHistorico)
 
+
     End Sub
+    'Getter de la instancia de la clase
+    Public Shared ReadOnly Property Instance() As BaseDatos
+        Get
+            If instancia Is Nothing Then
+                instancia = New BaseDatos()
+            End If
+            Return instancia
+        End Get
+    End Property
 
     Public Sub insertarTurno(nTurno As Integer, usuarios() As Usuario)
+
+        opciones.getNUsuarios()
 
         'Create a new row.
         Dim fTurno As DataRow
@@ -42,5 +61,10 @@ Public Class BaseDatos
         dtsHistorico.AcceptChanges()
 
     End Sub
+
+    'GETTERS & SETTERS
+    Public Function getDtsHistorico()
+        Return dtsHistorico
+    End Function
 
 End Class

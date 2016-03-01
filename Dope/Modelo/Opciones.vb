@@ -1,7 +1,7 @@
 ﻿Public NotInheritable Class Opciones
 
     'Instancia de la clase
-    Private Shared inst = Nothing
+    Private Shared instancia = Nothing
     'Número de jugadores
     Private nUsuarios As Integer = 2
     'Modo de juego
@@ -22,12 +22,10 @@
     'Getter de la instancia de la clase
     Public Shared ReadOnly Property Instance() As Opciones
         Get
-            If inst Is Nothing Then
-                If inst Is Nothing Then
-                    inst = New Opciones()
-                End If
+            If instancia Is Nothing Then
+                instancia = New Opciones()
             End If
-            Return inst
+            Return instancia
         End Get
     End Property
 
