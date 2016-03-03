@@ -30,8 +30,10 @@ Public Class Main
     'Botón de turno
     Private Sub BtnTurno_Click(sender As Object, e As EventArgs) Handles BtnTurno.Click
 
-        'Método de paso de jugador
+        'Método de paso de jugador + Cambio de cursor
+        Me.Cursor = Cursors.WaitCursor
         controlador.cambiarUsuario()
+        Me.Cursor = Cursors.Default
 
         'Si el controlador acaba la partida se cierra el formulario
         'Puede ser en cambio de turno o en cambio de jugador
@@ -57,7 +59,7 @@ Public Class Main
         'Guardar la partida? -> Implica conservar la base de datos
         If MsgBox("Guardar la partida?", MsgBoxStyle.YesNo) = DialogResult.No Then
             'Limpiar la base de datos
-            'controlador.limpiarBaseDatos
+            controlador.limpiarBaseDatos()
         End If
     End Sub
 

@@ -7,7 +7,7 @@ Public NotInheritable Class BaseDatos
     'DataAdapters
     Private dtaHistorico As OleDbDataAdapter
     'DataSets
-    Private dtsHistorico As DataSet
+    Private dtsHistorico As New DataSet
     'CommandBuilders
     Private cbHistorico As OleDbCommandBuilder
     'Instancia de las opciones
@@ -21,7 +21,7 @@ Public NotInheritable Class BaseDatos
 
         'Inicialización de los datos para la tabla histórico
         dtaHistorico = New OleDbDataAdapter("Select * from Historico", conexion)
-        'dtaHistorico.Fill(dtsHistorico, "Historico")
+        dtaHistorico.Fill(dtsHistorico, "Historico")
         cbHistorico = New OleDbCommandBuilder(dtaHistorico)
 
 
@@ -36,29 +36,35 @@ Public NotInheritable Class BaseDatos
         End Get
     End Property
 
-    Public Sub insertarTurno(nTurno As Integer, usuarios() As Usuario)
-
-        opciones.getNUsuarios()
-
-        'Create a new row.
-        Dim fTurno As DataRow
-        fTurno = dtsHistorico.Tables("Historico").NewRow
-
-        fTurno("Turno") = nTurno
-
-        Dim indice As Integer = 1
-        For Each usuario As Usuario In usuarios
-            If usuario.getDinero() = vbNull Then
-                fTurno("Dinero" & indice) = 0
+    Public Sub insertarFilaTurno(nTurno As Integer, dineroUsuarios As Integer())
+        Dim fFilaTurno As DataRow
+        Dim nombreFila As String
+        fFilaTurno = dtsHistorico.Tables("Historico").NewRow
+        fFilaTurno("Turno") = nTurno
+        For indice As Integer = 0 To 4
+            'Hace falta normalizar el índice de dinero para la base de datos
+            nombreFila = "Dinero" + CStr(indice + 1)
+            If indice < dineroUsuarios.Length Then
+                fFilaTurno(nombreFila) = dineroUsuarios(indice)
             Else
-                fTurno("Dinero" & indice) = usuario.getDinero()
+                fFilaTurno(nombreFila) = 0
             End If
         Next
 
-        dtsHistorico.Tables("Historico").Rows.Add(fTurno)
+        dtsHistorico.Tables("Historico").Rows.Add(fFilaTurno)
 
         dtaHistorico.Update(dtsHistorico, "Historico")
         dtsHistorico.AcceptChanges()
+
+    End Sub
+    'Se llama en caso de no guardar la partida
+    Public Sub limpiarBaseDatos()
+        dtaHistorico.DeleteCommand = conexion.CreateCommand
+        dtaHistorico.DeleteCommand.CommandText = "delete * from Historico"
+        dtaHistorico.DeleteCommand.ExecuteNonQuery()
+    End Sub
+    'Para reataurar la partida
+    Public Sub getDatosUltimaFila()
 
     End Sub
 

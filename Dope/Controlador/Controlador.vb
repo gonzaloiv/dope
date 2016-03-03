@@ -65,11 +65,14 @@
 
     'Cambio de turno 
     Private Sub pasarTurno()
-        '**
-        '** HAY QUE IMPLEMENTAR LA CLASE BaseDatos ANTES
-        '**
+
         'Guardar Histórico en la base de datos
-        'baseDatos.insertarTurno(nTurno, usuarios)
+        Dim dineroUsuarios(usuarios.Length) As Integer
+        For indice As Integer = 0 To usuarios.Length - 1
+            dineroUsuarios(indice) = usuarios(indice).getDinero()
+        Next
+
+        baseDatos.insertarFilaTurno(nTurno, dineroUsuarios)
 
         'Cambio de turno real
         nTurno += 1
@@ -93,6 +96,7 @@
     'Restaurar partida
     Public Sub restaurarDatos()
         'Llamada a la base de datos para pillar el número de turno y el dinero de los usuarios
+        baseDatos.getDatosUltimaFila()
         'For indice As Integer = 0 To 4
         'usuarios(indice).setDinero(dinero)
         'Next
@@ -100,7 +104,7 @@
     End Sub
     'Borrar datos base de datos
     Public Sub limpiarBaseDatos()
-
+        baseDatos.limpiarBaseDatos()
     End Sub
 
     'GESTION DE TRANSACCIONES
