@@ -6,6 +6,10 @@
     Private nUsuarios As Integer = 2
     'Modo de juego
     Private turnos As Boolean = True
+    'Modo testing
+    Private testMode As Boolean = False
+    'Continuar partida
+    Private continuar As Boolean = True
     'Parámetros de partida
     Private deudaInicial As Integer = 150
     Private dineroInicial As Integer = 20
@@ -44,6 +48,21 @@
     Function getTurnos()
         Return turnos
     End Function
+    'Test-Mode
+    Sub setTestMode(t As Boolean)
+        testMode = t
+    End Sub
+    Function getTestMode()
+        Return testMode
+    End Function
+    'Continuar partida
+    Sub setContinuar(c As Boolean)
+        continuar = c
+    End Sub
+    Function getContinuar()
+        Return continuar
+    End Function
+
     'Deuda inicial
     Sub setDeudaInicial(deuda As Integer)
         deudaInicial = deuda

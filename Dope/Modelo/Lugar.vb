@@ -10,20 +10,12 @@
 
         MyClass.nombre = nombre
 
-        'Creación de ratios para personalizar los precios de cada lugar
-        For index As Integer = 0 To 4
-            'Ratios para la cantidad aleatorios del 1 al 10
-            ratiosCantidad(index) = CInt(Math.Ceiling(Rnd() * 5))
-            'Ratios para el precio aleatorios del 1 al 10
-            ratiosPrecio(index) = CInt(Math.Ceiling(Rnd() * 10))
-        Next
-
         'Creación de cantidades y precios
         For index As Integer = 0 To 4
             'Valores para la cantidad aleatorios del 1 al 10
-            cantidades(index) = CInt(Math.Ceiling(Rnd() * 20)) + 20
-            'Valores para el precio aleatorios del 1 al 10
-            precios(index) = CInt(Math.Ceiling(Rnd() * 20)) + 20
+            cantidades(index) = CInt(Math.Ceiling(Rnd() * 10))
+            'Valores para el precio aleatorios de 5 a 15
+            precios(index) = CInt(Math.Ceiling(Rnd() * 15)) + 5
         Next
 
     End Sub
@@ -39,14 +31,29 @@
     Public Function getCantidades()
         Return MyClass.cantidades
     End Function
-    Public Sub setPrecios()
+    Public Sub setValoresTurno()
+
+        'Modificamos los indices
+        For indice As Integer = 0 To 4
+            'Ratios para la cantidad aleatorios del 1 al 10
+            ratiosCantidad(indice) = CInt(Math.Ceiling(Rnd() * 5)) - CInt(Math.Ceiling(Rnd() * 5))
+            'Ratios para el precio aleatorios del 1 al 10
+            ratiosPrecio(indice) = CInt(Math.Ceiling(Rnd() * 10)) - CInt(Math.Ceiling(Rnd() * 10))
+        Next
 
         'Para cada precio y cantidad se calcula el nuevo valor
-        'ValorActual = ValorAnterior + ValorAnterior * (Random(Ratio) - Ratio/2)
+        'ValorActual = ValorAnterior + ratio del lugar en el turno
 
         For indice As Integer = 0 To 4
-            precios(indice) = precios(indice) + precios(indice) * (CInt(Math.Ceiling(Rnd() * ratiosPrecio(indice))) - ratiosPrecio(indice) / 2)
-            cantidades(indice) = cantidades(indice) + cantidades(indice) * (CInt(Math.Ceiling(Rnd() * ratiosCantidad(indice))) - ratiosPrecio(indice) / 2)
+            precios(indice) = precios(indice) + ratiosPrecio(indice)
+            If precios(indice) < 0 Then
+                precios(indice) = 0
+            End If
+            cantidades(indice) = cantidades(indice) + ratiosPrecio(indice)
+            'No se permiten cantidades menores a 0
+            If cantidades(indice) < 0 Then
+                cantidades(indice) = 0
+            End If
         Next
 
     End Sub

@@ -26,7 +26,7 @@
     'Formulario final
     Dim fSalida As New Salida
 
-    'CONSTRUCTOR: Inicio del juego
+    'CONSTRUCTOR: Inicio de comenzar a jugar
     Sub New()
 
         'Creación de los lugares
@@ -46,7 +46,7 @@
 
     End Sub
 
-    'GESTIÓN DOS DE TURNO
+    'GESTIÓN DE TURNO
     'Cambio de jugador
     Public Sub cambiarUsuario()
 
@@ -83,21 +83,40 @@
     End Sub
 
     'GESTION DE DATOS
+    'Por turno
     Private Sub actualizarDatosLugares()
         'Para cada objeto de la clase lugar
         For indice As Integer = 0 To 4
-            lugares(indice).setPrecios()
+            lugares(indice).setValoresTurno()
         Next
+    End Sub
+    'Restaurar partida
+    Public Sub restaurarDatos()
+        'Llamada a la base de datos para pillar el número de turno y el dinero de los usuarios
+        'For indice As Integer = 0 To 4
+        'usuarios(indice).setDinero(dinero)
+        'Next
+        'nTurno = turno
+    End Sub
+    'Borrar datos base de datos
+    Public Sub limpiarBaseDatos()
+
     End Sub
 
     'GESTION DE TRANSACCIONES
     'Comprar
-    Public Sub comprar()
-        usuarios(nUsuarioActivo).setDinero(1)
+    Public Sub comprar(dineroActual As Integer, cantidad As Integer, categoria As Integer)
+        'Dinero = dinero actual - (precio * cantidad)
+        getUsuarioActivo().setDinero(dineroActual - cantidad * getLugarActivo().getPrecio(categoria))
+        'Cantidad = cantidad actual - cantidad comprada   
+        getLugarActivo().setCantidad(categoria, getLugarActivo().getCantidad(categoria) - cantidad)
     End Sub
     'Vender
-    Public Sub vender()
-        usuarios(nUsuarioActivo).setDinero(1)
+    Public Sub vender(dineroActual As Integer, cantidad As Integer, categoria As Integer)
+        'Dinero = dinero actual + (Precio * Cantidad)
+        getUsuarioActivo().setDinero(dineroActual + cantidad * getLugarActivo().getPrecio(categoria))
+        'Cantidad = cantidad actual + cantidad vendida
+        getLugarActivo.setCantidad(categoria, getLugarActivo().getCantidad(categoria) + cantidad)
     End Sub
 
     'GESTIÓN DE EVENTOS
@@ -122,12 +141,7 @@
         End If
     End Sub
 
-
-    'UTILIDADES
     'GETTERS
-    Public Function getNUsuarioActivo()
-        Return nUsuarioActivo
-    End Function
     Public Function getUsuarioActivo()
         Return usuarios(nUsuarioActivo)
     End Function
@@ -140,9 +154,5 @@
     Public Function getFinPartida()
         Return finPartida
     End Function
-    'SETTERS
-    Public Sub setUsuario(indice As Integer, usuario As Usuario)
-        usuarios(indice) = usuario
-    End Sub
 
 End Class

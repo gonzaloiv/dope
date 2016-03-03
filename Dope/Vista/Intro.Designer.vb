@@ -24,18 +24,21 @@ Partial Class FrmIntro
     Private Sub InitializeComponent()
         Me.BtnIntroComenzar = New System.Windows.Forms.Button()
         Me.BtnIntroOpciones = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.LblIntroModo = New System.Windows.Forms.Label()
-        Me.LblIntroNJugadores = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.BtnContinuar = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.StatusJugadores = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.StatusModoJuego = New System.Windows.Forms.ToolStripStatusLabel()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtnIntroComenzar
         '
         Me.BtnIntroComenzar.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnIntroComenzar.Location = New System.Drawing.Point(60, 310)
+        Me.BtnIntroComenzar.Location = New System.Drawing.Point(41, 310)
         Me.BtnIntroComenzar.Name = "BtnIntroComenzar"
         Me.BtnIntroComenzar.Size = New System.Drawing.Size(75, 23)
         Me.BtnIntroComenzar.TabIndex = 1
@@ -45,52 +48,12 @@ Partial Class FrmIntro
         'BtnIntroOpciones
         '
         Me.BtnIntroOpciones.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnIntroOpciones.Location = New System.Drawing.Point(60, 339)
+        Me.BtnIntroOpciones.Location = New System.Drawing.Point(203, 310)
         Me.BtnIntroOpciones.Name = "BtnIntroOpciones"
         Me.BtnIntroOpciones.Size = New System.Drawing.Size(75, 23)
         Me.BtnIntroOpciones.TabIndex = 2
         Me.BtnIntroOpciones.Text = "Opciones"
         Me.BtnIntroOpciones.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(150, 315)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 13)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Modo de juego:"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(150, 344)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 13)
-        Me.Label4.TabIndex = 4
-        Me.Label4.Text = "Jugadores:"
-        '
-        'LblIntroModo
-        '
-        Me.LblIntroModo.AutoSize = True
-        Me.LblIntroModo.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblIntroModo.Location = New System.Drawing.Point(237, 315)
-        Me.LblIntroModo.Name = "LblIntroModo"
-        Me.LblIntroModo.Size = New System.Drawing.Size(13, 13)
-        Me.LblIntroModo.TabIndex = 5
-        Me.LblIntroModo.Text = "X"
-        '
-        'LblIntroNJugadores
-        '
-        Me.LblIntroNJugadores.AutoSize = True
-        Me.LblIntroNJugadores.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblIntroNJugadores.Location = New System.Drawing.Point(210, 344)
-        Me.LblIntroNJugadores.Name = "LblIntroNJugadores"
-        Me.LblIntroNJugadores.Size = New System.Drawing.Size(13, 13)
-        Me.LblIntroNJugadores.TabIndex = 6
-        Me.LblIntroNJugadores.Text = "X"
         '
         'PictureBox2
         '
@@ -102,19 +65,62 @@ Partial Class FrmIntro
         Me.PictureBox2.TabIndex = 0
         Me.PictureBox2.TabStop = False
         '
+        'BtnContinuar
+        '
+        Me.BtnContinuar.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnContinuar.Location = New System.Drawing.Point(122, 310)
+        Me.BtnContinuar.Name = "BtnContinuar"
+        Me.BtnContinuar.Size = New System.Drawing.Size(75, 23)
+        Me.BtnContinuar.TabIndex = 7
+        Me.BtnContinuar.Text = "Continuar"
+        Me.BtnContinuar.UseVisualStyleBackColor = True
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.StatusJugadores, Me.ToolStripStatusLabel2, Me.StatusModoJuego})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 343)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(322, 22)
+        Me.StatusStrip1.TabIndex = 8
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(66, 17)
+        Me.ToolStripStatusLabel1.Text = "Jugadores: "
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(91, 17)
+        Me.ToolStripStatusLabel2.Text = "Modo de juego:"
+        '
+        'StatusJugadores
+        '
+        Me.StatusJugadores.Name = "StatusJugadores"
+        Me.StatusJugadores.Size = New System.Drawing.Size(12, 17)
+        Me.StatusJugadores.Text = "x"
+        '
+        'StatusModoJuego
+        '
+        Me.StatusModoJuego.Name = "StatusModoJuego"
+        Me.StatusModoJuego.Size = New System.Drawing.Size(12, 17)
+        Me.StatusModoJuego.Text = "x"
+        '
         'FrmIntro
         '
-        Me.ClientSize = New System.Drawing.Size(322, 372)
-        Me.Controls.Add(Me.LblIntroNJugadores)
-        Me.Controls.Add(Me.LblIntroModo)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
+        Me.ClientSize = New System.Drawing.Size(322, 365)
+        Me.Controls.Add(Me.StatusStrip1)
+        Me.Controls.Add(Me.BtnContinuar)
         Me.Controls.Add(Me.BtnIntroOpciones)
         Me.Controls.Add(Me.BtnIntroComenzar)
         Me.Controls.Add(Me.PictureBox2)
         Me.Name = "FrmIntro"
         Me.Text = "Fifa Wars"
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -129,8 +135,10 @@ Partial Class FrmIntro
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents BtnIntroComenzar As Button
     Friend WithEvents BtnIntroOpciones As Button
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents LblIntroModo As Label
-    Friend WithEvents LblIntroNJugadores As Label
+    Friend WithEvents BtnContinuar As Button
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents StatusJugadores As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents StatusModoJuego As ToolStripStatusLabel
 End Class

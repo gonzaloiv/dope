@@ -11,14 +11,23 @@ Public Class FrmIntro
     End Sub
     'OTROS FORMULARIOS
     'Main
-    Private Sub BtnIntroComenzar_Click(sender As Object, e As EventArgs) Handles BtnIntroComenzar.Click
+    Private Sub BtnIntroComenzar_Click(sender As Object, e As EventArgs) Handles BtnIntroComenzar.Click, BtnContinuar.Click
+        'Cursor de espera
+        Me.Cursor = Cursors.WaitCursor
         'Sonido de silbato para comenzar
         Recursos.whistleSound()
+        'Se reinician los datos o no según el botón llamado
+        If sender Is BtnContinuar Then
+            opciones.setContinuar(True)
+        Else
+            opciones.setContinuar(False)
+        End If
         'Gestión de la ventana principal
         fMain = New Main
         fMain.Show()
         Me.Hide()
     End Sub
+
     'Settings
     Private Sub BtnIntroOpciones_Click(sender As Object, e As EventArgs) Handles BtnIntroOpciones.Click
         fOpciones = New V_Settings
@@ -28,10 +37,10 @@ Public Class FrmIntro
     'Método que interactúa con la pantalla settings
     Sub getSettings()
         If opciones.getTurnos() = True Then
-            LblIntroModo.Text = "15 turnos"
+            StatusModoJuego.Text = "15 turnos"
         Else
-            LblIntroModo.Text = "no-limit"
+            StatusModoJuego.Text = "no-limit"
         End If
-        LblIntroNJugadores.Text = opciones.getNUsuarios()
+        StatusJugadores.Text = opciones.getNUsuarios()
     End Sub
 End Class

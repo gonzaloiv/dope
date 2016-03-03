@@ -30,13 +30,14 @@ Partial Class V_Settings
         Me.TxtNom = New System.Windows.Forms.TextBox()
         Me.CmbNom = New System.Windows.Forms.ComboBox()
         Me.BtnVolver = New System.Windows.Forms.Button()
+        Me.CheckTestMode = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 42)
+        Me.Label1.Location = New System.Drawing.Point(20, 65)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(108, 13)
         Me.Label1.TabIndex = 0
@@ -46,7 +47,7 @@ Partial Class V_Settings
         '
         Me.CmbNJugadores.FormattingEnabled = True
         Me.CmbNJugadores.Items.AddRange(New Object() {"1", "2", "3", "4", "5"})
-        Me.CmbNJugadores.Location = New System.Drawing.Point(140, 39)
+        Me.CmbNJugadores.Location = New System.Drawing.Point(139, 62)
         Me.CmbNJugadores.Name = "CmbNJugadores"
         Me.CmbNJugadores.Size = New System.Drawing.Size(43, 21)
         Me.CmbNJugadores.TabIndex = 1
@@ -68,7 +69,7 @@ Partial Class V_Settings
         Me.GroupBox1.Controls.Add(Me.BtnNom)
         Me.GroupBox1.Controls.Add(Me.TxtNom)
         Me.GroupBox1.Controls.Add(Me.CmbNom)
-        Me.GroupBox1.Location = New System.Drawing.Point(15, 66)
+        Me.GroupBox1.Location = New System.Drawing.Point(14, 89)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(174, 91)
         Me.GroupBox1.TabIndex = 4
@@ -101,18 +102,29 @@ Partial Class V_Settings
         '
         'BtnVolver
         '
-        Me.BtnVolver.Location = New System.Drawing.Point(65, 163)
+        Me.BtnVolver.Location = New System.Drawing.Point(65, 186)
         Me.BtnVolver.Name = "BtnVolver"
         Me.BtnVolver.Size = New System.Drawing.Size(75, 23)
         Me.BtnVolver.TabIndex = 5
         Me.BtnVolver.Text = "Volver"
         Me.BtnVolver.UseVisualStyleBackColor = True
         '
+        'CheckTestMode
+        '
+        Me.CheckTestMode.AutoSize = True
+        Me.CheckTestMode.Location = New System.Drawing.Point(23, 39)
+        Me.CheckTestMode.Name = "CheckTestMode"
+        Me.CheckTestMode.Size = New System.Drawing.Size(83, 17)
+        Me.CheckTestMode.TabIndex = 6
+        Me.CheckTestMode.Text = "Test-Mode?"
+        Me.CheckTestMode.UseVisualStyleBackColor = True
+        '
         'V_Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(204, 200)
+        Me.ClientSize = New System.Drawing.Size(204, 218)
+        Me.Controls.Add(Me.CheckTestMode)
         Me.Controls.Add(Me.BtnVolver)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ChTurnos)
@@ -134,4 +146,5 @@ Partial Class V_Settings
     Friend WithEvents CmbNom As System.Windows.Forms.ComboBox
     Friend WithEvents BtnVolver As System.Windows.Forms.Button
     Friend WithEvents BtnNom As System.Windows.Forms.Button
+    Friend WithEvents CheckTestMode As CheckBox
 End Class
