@@ -42,7 +42,7 @@
     'BTN DE SALIR
     Private Sub BtnVolver_Click(sender As Object, e As EventArgs) Handles BtnVolver.Click
         Me.Close()
-        FrmIntro.setComponentesOpciones()
+        FrmIntro.setVistaOpciones()
     End Sub
 
     Private Sub V_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load

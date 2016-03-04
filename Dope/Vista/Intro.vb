@@ -9,25 +9,37 @@ Public Class FrmIntro
 
     'Cargado inicial
     Private Sub FrmIntro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        setComponentesOpciones()
+        setVistaOpciones()
+        'En función de los valores de la partida anterior escogemos si se puede o no continuar partida
+        baseDatos.getOpcionesPartida()
+        If opciones.getContinuar Then
+            BtnContinuar.Enabled = True
+        Else
+            BtnContinuar.Enabled = False
+        End If
     End Sub
     'OTROS FORMULARIOS
     'Main
     Private Sub BtnIntroComenzar_Click(sender As Object, e As EventArgs) Handles BtnIntroComenzar.Click, BtnContinuar.Click
+
         'Cursor de espera
         Me.Cursor = Cursors.WaitCursor
+
         'Sonido de silbato para comenzar
         Recursos.whistleSound()
+
         'Se reinician los datos o no según el botón llamado
         If sender Is BtnContinuar Then
             opciones.setContinuar(True)
         Else
             opciones.setContinuar(False)
         End If
+
         'Gestión de la ventana principal
         fMain = New Main
         fMain.Show()
         Me.Hide()
+
     End Sub
 
     'Settings
@@ -37,7 +49,7 @@ Public Class FrmIntro
     End Sub
     'METODOS
     'Método que interactúa con la pantalla settings
-    Sub setComponentesOpciones()
+    Sub setVistaOpciones()
         'Número de turno
         If opciones.getTurnos() = True Then
             StatusModoJuego.Text = "15 turnos"

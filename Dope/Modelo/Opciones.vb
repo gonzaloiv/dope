@@ -9,7 +9,7 @@
     'Modo testing
     Private testMode As Boolean = False
     'Continuar partida
-    Private continuar As Boolean = True
+    Private continuar As Boolean
     'Parámetros de partida
     Private deudaInicial As Integer = 150
     Private dineroInicial As Integer = 20

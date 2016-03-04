@@ -27,7 +27,6 @@ Public NotInheritable Class BaseDatos
         dtaHistorico.Fill(dtsHistorico, "Historico")
         cbHistorico = New OleDbCommandBuilder(dtaHistorico)
 
-
     End Sub
     'Getter de la instancia de la clase
     Public Shared ReadOnly Property Instance() As BaseDatos
@@ -58,7 +57,6 @@ Public NotInheritable Class BaseDatos
 
         dtaHistorico.Update(dtsHistorico, "Historico")
         dtsHistorico.AcceptChanges()
-
     End Sub
     'Se llama en caso de no guardar la partida
     Public Sub limpiarBaseDatos()
@@ -71,24 +69,11 @@ Public NotInheritable Class BaseDatos
         dtsHistorico.AcceptChanges()
         conexion.Close()
     End Sub
-    'Guardar nombre de usuarios, tipo de partida, 
-    Public Sub guardarDatosPartida()
-        'Guardarlo en un archivo 
-        'Lineas para cada nombre de usuario, para el tipo de partida y para datos en base
-        Using outputFile As New StreamWriter(Convert.ToString("opciones.txt"), True)
-            For indice As Integer = 0 To 4
-                outputFile.WriteLine(opciones.getNomJugador(indice))
-            Next
-            outputFile.WriteLine(opciones.getTurnos)
-            outputFile.WriteLine(opciones.getContinuar)
-        End Using
-
-    End Sub
 
     'RESTAURAR LA PARTIDA
+    'HISTORICO
     'Número de turno
     Public Function getNumeroUltimoTurno()
-        conexion.Open()
         Dim nTurno As Integer = 0
         For indice As Integer = 0 To dtsHistorico.Tables("Historico").Rows.Count
             nTurno += 1
@@ -111,17 +96,35 @@ Public NotInheritable Class BaseDatos
         Next
         Return dineroUsuarios
     End Function
-    'Opciones
-    Public Sub getOpcionesPartida()
+    'OPCIONES
+    'Guardar nombre de usuarios, tipo de partida, 
+    Public Sub guardarDatosPartida()
+        'Limpiamos el archivo de texto
+        File.WriteAllText("opciones.txt", "")
+        'Lineas para cada nombre de usuario
+        Using outputFile As New StreamWriter(Convert.ToString("opciones.txt"), True)
+            For indice As Integer = 0 To 4
+                outputFile.WriteLine(opciones.getNomJugador(indice))
+            Next
+            'Línea para el modo de juego
+            outputFile.WriteLine(opciones.getTurnos)
+            'Línea para la opción de continuar, si es negativa en pricipio no vamos a cargar los datos
+            outputFile.WriteLine(opciones.getContinuar)
+        End Using
+    End Sub
+    'Restaurar las opciones desde el documento
+    Public Function getOpcionesPartida()
         'FALTA MEJORAR
         Using inputFile As New StreamReader(Convert.ToString("opciones.txt"), True)
             For indice As Integer = 0 To 4
-                opciones.setNomJugador(indice, inputFile.ReadLine())
+                opciones.setNomJugador(indice + 1, inputFile.ReadLine())
             Next
             opciones.setTurnos(inputFile.ReadLine())
             opciones.setTurnos(inputFile.ReadLine())
         End Using
-    End Sub
+        'Devulve true a quien lo llama en caso de que haya que continuar
+        Return opciones.getContinuar
+    End Function
 
     'GETTERS & SETTERS
     Public Function getDtsHistorico()

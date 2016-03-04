@@ -57,7 +57,12 @@ Public Class Main
         If MsgBox("Guardar la partida?", MsgBoxStyle.YesNo) = DialogResult.No Then
             'Limpiar la base de datos
             controlador.limpiarBaseDatos()
+            'Impedimos la carga de los datos la siguiente partida
+            opciones.setContinuar(False)
+            'Guardamos las opciones para la próxima partida
+            controlador.guardarDatosPartida()
         Else
+            opciones.setContinuar(True)
             controlador.guardarDatosPartida()
         End If
     End Sub
@@ -114,7 +119,8 @@ Public Class Main
 
                     'Si no supera el dinero actual del usuario activo
                     If precioTotalTransaccion < usuarioActivo.getDinero Then
-
+                        'Desbloqueamos el combo de cantidad
+                        CmbCantidad.Enabled = True
                         'Suma una nueva opción
                         CmbCantidad.Items.Add(cantidad)
                     End If

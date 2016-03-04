@@ -114,6 +114,7 @@
         Next
     End Sub
 
+    'METODOS DE PARTIDA
     'Borrar datos base de datos
     Public Sub limpiarBaseDatos()
         baseDatos.limpiarBaseDatos()
