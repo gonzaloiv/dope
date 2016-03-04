@@ -6,17 +6,13 @@ Public Class Main
     Private usuarioActivo As Usuario
     Private lugarActivo As Lugar
     'Controlador
-    Private controlador As Controlador
+    Private controlador As Controlador = controlador.Instance
     'Archivo de opciones
     Private opciones As Opciones = Opciones.Instance
-    'PROPIOS
-    'Parámetro para el precio total de la operación, lo modifica el combo de cantidad y el de categorías
-
 
     'INICIO
     'Cargado inicial
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        controlador = New Controlador()
         iniciarControladoresEstaticos()
         If opciones.getContinuar Then
             controlador.restaurarDatos()
@@ -39,6 +35,7 @@ Public Class Main
         'Puede ser en cambio de turno o en cambio de jugador
         If (controlador.getFinPartida()) Then
             Me.Dispose()
+
         End If
 
         'Actualización de la vista
@@ -60,6 +57,8 @@ Public Class Main
         If MsgBox("Guardar la partida?", MsgBoxStyle.YesNo) = DialogResult.No Then
             'Limpiar la base de datos
             controlador.limpiarBaseDatos()
+        Else
+            controlador.guardarDatosPartida()
         End If
     End Sub
 
@@ -147,7 +146,10 @@ Public Class Main
     'INICIALIZACIÓN
     'Las tres listas cambian el índice del combo de categorías
     Private Sub LstCategorias_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LstCategorias.SelectedIndexChanged, LstCantidad.SelectedIndexChanged, LstPrecio.SelectedIndexChanged
-
+        CmbCategorias.SelectedIndex = sender.SelectedIndex
+        LstCategorias.SelectedIndex = sender.SelectedIndex
+        LstPrecio.SelectedIndex = sender.SelectedIndex
+        LstCantidad.SelectedIndex = sender.SelectedIndex
     End Sub
     'Ambos radios limpian e inhabilitan el combo de cantidad
     Private Sub RadioVender_CheckedChanged(sender As Object, e As EventArgs) Handles RadioVender.CheckedChanged, RadioFichar.CheckedChanged
@@ -181,6 +183,7 @@ Public Class Main
             CheckGanar.Visible = False
             CheckTurnos.Visible = False
         End If
+
     End Sub
 
     'ACTUALIZACIÓN DE DATOS

@@ -22,14 +22,15 @@ Partial Class FrmIntro
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmIntro))
         Me.BtnIntroComenzar = New System.Windows.Forms.Button()
         Me.BtnIntroOpciones = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.BtnContinuar = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusJugadores = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusModoJuego = New System.Windows.Forms.ToolStripStatusLabel()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -90,17 +91,17 @@ Partial Class FrmIntro
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(66, 17)
         Me.ToolStripStatusLabel1.Text = "Jugadores: "
         '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(91, 17)
-        Me.ToolStripStatusLabel2.Text = "Modo de juego:"
-        '
         'StatusJugadores
         '
         Me.StatusJugadores.Name = "StatusJugadores"
         Me.StatusJugadores.Size = New System.Drawing.Size(12, 17)
         Me.StatusJugadores.Text = "x"
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(91, 17)
+        Me.ToolStripStatusLabel2.Text = "Modo de juego:"
         '
         'StatusModoJuego
         '
@@ -116,6 +117,7 @@ Partial Class FrmIntro
         Me.Controls.Add(Me.BtnIntroOpciones)
         Me.Controls.Add(Me.BtnIntroComenzar)
         Me.Controls.Add(Me.PictureBox2)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmIntro"
         Me.Text = "Fifa Wars"
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()

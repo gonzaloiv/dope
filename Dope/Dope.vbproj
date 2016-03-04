@@ -60,6 +60,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>money.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -86,6 +89,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Controlador\Controlador.vb" />
     <Compile Include="DopeDBDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -186,11 +190,14 @@
     <None Include="bin\Debug\Intro.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="money.ico" />
     <None Include="bin\Debug\logo3.png" />
     <None Include="bin\Debug\logo_5.png" />
     <None Include="bin\Debug\Recursos\icon.png" />
     <None Include="bin\Debug\Recursos\Cash.wav" />
     <None Include="bin\Debug\Recursos\Whistle.wav" />
+    <None Include="bin\Debug\Recursos\ending_background.jpg" />
+    <None Include="bin\Debug\Recursos\ending_background.png" />
     <Content Include="DopeDB.accdb" />
     <None Include="bin\Debug\Cash.wav" />
   </ItemGroup>

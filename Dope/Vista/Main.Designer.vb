@@ -22,6 +22,7 @@ Partial Class Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -331,7 +332,7 @@ Partial Class Main
         Me.StaTurno.AutoToolTip = True
         Me.StaTurno.Font = New System.Drawing.Font("Trebuchet MS", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StaTurno.Name = "StaTurno"
-        Me.StaTurno.Size = New System.Drawing.Size(58, 18)
+        Me.StaTurno.Size = New System.Drawing.Size(56, 18)
         Me.StaTurno.Text = "StaTurno"
         '
         'CheckGanar
@@ -382,8 +383,9 @@ Partial Class Main
         Me.Controls.Add(Me.CmbLugares)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BtnTurno)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Main"
-        Me.Text = "Main"
+        Me.Text = "Fifa Wars"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)

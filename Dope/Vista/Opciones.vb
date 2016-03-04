@@ -26,6 +26,8 @@
         For n As Integer = 1 To nUsuarios
             CmbNom.Items.Add(n)
         Next
+        'Activa el combo de nombres
+        CmbNom.Enabled = True
     End Sub
     'BTN DE CONFIRMACIÓN DE NOMBRES
     Private Sub BtnNom_Click(sender As Object, e As EventArgs) Handles BtnNom.Click
@@ -35,10 +37,16 @@
     'CMB DE SELECCIÓN DE NOMBRES
     Private Sub CmbNom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbNom.SelectedIndexChanged
         TxtNom.Text = opciones.getNomJugador(CmbNom.SelectedItem - 1)
+        BtnNom.Enabled = True
     End Sub
     'BTN DE SALIR
     Private Sub BtnVolver_Click(sender As Object, e As EventArgs) Handles BtnVolver.Click
         Me.Close()
-        FrmIntro.getSettings()
+        FrmIntro.setComponentesOpciones()
+    End Sub
+
+    Private Sub V_Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Las confirmación de nombre
+        BtnNom.Enabled = False
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class Controlador
+﻿Public NotInheritable Class Controlador
 
     'VALORES PARA TEST CON LOS LUGARES 
     'Dim cantidadesBase() As Integer = {2, 3, 4, 5, 6}
@@ -13,6 +13,8 @@
     Private finPartida As Boolean = False
 
     'CLASES
+    'Instancia de la clase
+    Private Shared instancia = Nothing
     'Lista de usuarios
     Private usuarios() As Usuario
     'Lista de lugares
@@ -25,6 +27,15 @@
     'FORMULARIOS
     'Formulario final
     Dim fSalida As New Salida
+
+    Public Shared ReadOnly Property Instance() As Controlador
+        Get
+            If instancia Is Nothing Then
+                instancia = New Controlador()
+            End If
+            Return instancia
+        End Get
+    End Property
 
     'CONSTRUCTOR: Inicio de comenzar a jugar
     Sub New()
@@ -96,15 +107,20 @@
     'Restaurar partida
     Public Sub restaurarDatos()
         'Llamada a la base de datos para pillar el número de turno y el dinero de los usuarios
-        baseDatos.getDatosUltimaFila()
-        'For indice As Integer = 0 To 4
-        'usuarios(indice).setDinero(dinero)
-        'Next
-        'nTurno = turno
+        nTurno = baseDatos.getNumeroUltimoTurno()
+        Dim dineroUsuarios() As Integer = baseDatos.getDineroUsuariosUltimaFila()
+        For indice As Integer = 0 To usuarios.Length - 1
+            usuarios(indice).setDinero(dineroUsuarios(indice))
+        Next
     End Sub
+
     'Borrar datos base de datos
     Public Sub limpiarBaseDatos()
         baseDatos.limpiarBaseDatos()
+    End Sub
+    'Guardar los datos de la partida: Tipo de partida y nombre usuarios
+    Public Sub guardarDatosPartida()
+        baseDatos.guardarDatosPartida()
     End Sub
 
     'GESTION DE TRANSACCIONES
@@ -125,7 +141,7 @@
 
     'GESTIÓN DE EVENTOS
     Private Sub gestionEventos()
-
+        'POSIBLE IMPLEMENTACIÓN DE EVENTOS
     End Sub
 
     'GESTION DE PARTIDA

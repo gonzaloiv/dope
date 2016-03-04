@@ -25,6 +25,7 @@ Partial Class Salida
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Salida))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ChartSalida = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.LblSalidaNom = New System.Windows.Forms.Label()
@@ -44,6 +45,8 @@ Partial Class Salida
         '
         'ChartSalida
         '
+        Me.ChartSalida.BackColor = System.Drawing.Color.Transparent
+        Me.ChartSalida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         ChartArea1.Name = "ChartArea1"
         Me.ChartSalida.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Legend1"
@@ -71,7 +74,7 @@ Partial Class Salida
         '
         Me.LblSalidaGana.AutoSize = True
         Me.LblSalidaGana.Font = New System.Drawing.Font("Segoe Print", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblSalidaGana.Location = New System.Drawing.Point(127, 18)
+        Me.LblSalidaGana.Location = New System.Drawing.Point(127, 23)
         Me.LblSalidaGana.Name = "LblSalidaGana"
         Me.LblSalidaGana.Size = New System.Drawing.Size(46, 19)
         Me.LblSalidaGana.TabIndex = 29
@@ -86,6 +89,7 @@ Partial Class Salida
         Me.Controls.Add(Me.LblSalidaNom)
         Me.Controls.Add(Me.ChartSalida)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Salida"
         Me.Text = "Fifa Wars"
         CType(Me.ChartSalida, System.ComponentModel.ISupportInitialize).EndInit()

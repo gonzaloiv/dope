@@ -15,7 +15,7 @@
     Private dineroInicial As Integer = 20
 
     'NOMBRES
-    Dim NOM_JUGADORES() As String = {"Mendes", "Raiola", "Bronzetti", "Carvajal", "Mascardi"}
+    Dim NOM_JUGADORES() As String = {"Mendes", "Raiola", "Neymar", "Bronzetti", "Carvajal"}
     Dim NOM_LUGARES() As String = {"Liga", "Premier", "Calcio", "Bundesliga", "Ligue 1"}
     Dim NOM_CATEGORIAS() As String = {"Alevín", "Infantil", "Cadete", "Juvenil", "Senior"}
 

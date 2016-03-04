@@ -22,6 +22,7 @@ Partial Class V_Settings
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(V_Settings))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CmbNJugadores = New System.Windows.Forms.ComboBox()
         Me.ChTurnos = New System.Windows.Forms.CheckBox()
@@ -130,8 +131,9 @@ Partial Class V_Settings
         Me.Controls.Add(Me.ChTurnos)
         Me.Controls.Add(Me.CmbNJugadores)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "V_Settings"
-        Me.Text = "Manager"
+        Me.Text = "Fifa Wars"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)

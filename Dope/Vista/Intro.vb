@@ -3,11 +3,13 @@ Public Class FrmIntro
     'Ventanas
     Dim fOpciones As V_Settings
     Dim fMain As Main
-    'Instancia de settings
-    Dim opciones As Opciones = Opciones.Instance
+    'Instancia de clases
+    Dim opciones As Opciones = opciones.Instance
+    Dim baseDatos As BaseDatos = BaseDatos.Instance
+
     'Cargado inicial
     Private Sub FrmIntro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        getSettings()
+        setComponentesOpciones()
     End Sub
     'OTROS FORMULARIOS
     'Main
@@ -35,12 +37,20 @@ Public Class FrmIntro
     End Sub
     'METODOS
     'Método que interactúa con la pantalla settings
-    Sub getSettings()
+    Sub setComponentesOpciones()
+        'Número de turno
         If opciones.getTurnos() = True Then
             StatusModoJuego.Text = "15 turnos"
         Else
             StatusModoJuego.Text = "no-limit"
         End If
+        'Texto del modo de juego
         StatusJugadores.Text = opciones.getNUsuarios()
+        'Habilitar o no el botón de continuar si hay o no datos guardados
+        If opciones.getContinuar Then
+            BtnContinuar.Enabled = True
+        Else
+            BtnContinuar.Enabled = False
+        End If
     End Sub
 End Class
