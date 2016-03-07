@@ -110,19 +110,24 @@ Public NotInheritable Class BaseDatos
             outputFile.WriteLine(opciones.getTurnos)
             'Línea para la opción de continuar, si es negativa en pricipio no vamos a cargar los datos
             outputFile.WriteLine(opciones.getContinuar)
+            'Línea para el número de usuarios
+            outputFile.WriteLine(opciones.getNUsuarios)
+            outputFile.Close()
         End Using
+
     End Sub
     'Restaurar las opciones desde el documento
     Public Function getOpcionesPartida()
         'FALTA MEJORAR
         Using inputFile As New StreamReader(Convert.ToString("opciones.txt"), True)
             For indice As Integer = 0 To 4
-                opciones.setNomJugador(indice + 1, inputFile.ReadLine())
+                opciones.setNomJugadorPartida(indice, inputFile.ReadLine())
             Next
             opciones.setTurnos(inputFile.ReadLine())
-            opciones.setTurnos(inputFile.ReadLine())
+            opciones.setContinuar(inputFile.ReadLine())
+            opciones.setNUsuarios(inputFile.ReadLine())
         End Using
-        'Devulve true a quien lo llama en caso de que haya que continuar
+        'Devuelve true a quien lo llama en caso de que haya que continuar
         Return opciones.getContinuar
     End Function
 

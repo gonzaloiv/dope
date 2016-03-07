@@ -52,9 +52,12 @@
         'Creación de los usuarios
         ReDim usuarios(opciones.getNUsuarios() - 1)
         For indice As Integer = 0 To opciones.getNUsuarios() - 1
-            usuarios(indice) = New Usuario(opciones.getNomJugador(indice), indice + 1, opciones.getDineroInicial())
+            If (opciones.getContinuar = True) Then
+                usuarios(indice) = New Usuario(opciones.getNomJugadorPartida(indice), indice + 1, opciones.getDineroInicial())
+            Else
+                usuarios(indice) = New Usuario(opciones.getNomJugador(indice), indice + 1, opciones.getDineroInicial())
+            End If
         Next
-
     End Sub
 
     'GESTIÓN DE TURNO
@@ -127,15 +130,20 @@
     'GESTION DE TRANSACCIONES
     'Comprar
     Public Sub comprar(dineroActual As Integer, cantidad As Integer, categoria As Integer)
+        MsgBox(cantidad)
         'Dinero = dinero actual - (precio * cantidad)
         getUsuarioActivo().setDinero(dineroActual - cantidad * getLugarActivo().getPrecio(categoria))
-        'Cantidad = cantidad actual - cantidad comprada   
+        'Cantidad Usuario = cantidad actual + cantidad comprada
+        getUsuarioActivo().setCantidad(categoria, getUsuarioActivo().getCantidad(categoria) + cantidad)
+        'Cantidad Lugar = cantidad actual - cantidad comprada   
         getLugarActivo().setCantidad(categoria, getLugarActivo().getCantidad(categoria) - cantidad)
     End Sub
     'Vender
     Public Sub vender(dineroActual As Integer, cantidad As Integer, categoria As Integer)
         'Dinero = dinero actual + (Precio * Cantidad)
         getUsuarioActivo().setDinero(dineroActual + cantidad * getLugarActivo().getPrecio(categoria))
+        'Cantidad Usuario = cantidad actual - cantidad vendida
+        getUsuarioActivo().setCantidad(categoria, getUsuarioActivo().getCantidad(categoria) - cantidad)
         'Cantidad = cantidad actual + cantidad vendida
         getLugarActivo.setCantidad(categoria, getLugarActivo().getCantidad(categoria) + cantidad)
     End Sub

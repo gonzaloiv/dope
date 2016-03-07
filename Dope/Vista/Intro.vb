@@ -1,4 +1,4 @@
-﻿Imports System.Data.OleDb
+﻿
 Public Class FrmIntro
     'Ventanas
     Dim fOpciones As V_Settings
@@ -9,10 +9,11 @@ Public Class FrmIntro
 
     'Cargado inicial
     Private Sub FrmIntro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        setVistaOpciones()
         'En función de los valores de la partida anterior escogemos si se puede o no continuar partida
         baseDatos.getOpcionesPartida()
-        If opciones.getContinuar Then
+        'Se muestran las opciones seleccionadas
+        setVistaOpciones()
+        If opciones.getContinuar = true Then
             BtnContinuar.Enabled = True
         Else
             BtnContinuar.Enabled = False
@@ -38,6 +39,7 @@ Public Class FrmIntro
         'Gestión de la ventana principal
         fMain = New Main
         fMain.Show()
+        'Con dispose se cierra todo
         Me.Hide()
 
     End Sub
@@ -47,7 +49,7 @@ Public Class FrmIntro
         fOpciones = New V_Settings
         fOpciones.Show()
     End Sub
-    'METODOS
+
     'Método que interactúa con la pantalla settings
     Sub setVistaOpciones()
         'Número de turno

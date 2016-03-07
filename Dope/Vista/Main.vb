@@ -35,7 +35,6 @@ Public Class Main
         'Puede ser en cambio de turno o en cambio de jugador
         If (controlador.getFinPartida()) Then
             Me.Dispose()
-
         End If
 
         'Actualización de la vista
@@ -74,8 +73,7 @@ Public Class Main
         'Compra
         If RadioFichar.Checked Then
             'Se realiza la compra en el controlador
-            controlador.comprar(usuarioActivo.getDinero, CmbCantidad.SelectedValue + 1, CmbCategorias.SelectedIndex)
-            MsgBox("fichar...")
+            controlador.comprar(usuarioActivo.getDinero, CmbCantidad.SelectedIndex + 1, CmbCategorias.SelectedIndex)
         End If
 
         'Venta

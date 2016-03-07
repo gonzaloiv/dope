@@ -31,12 +31,16 @@
     End Sub
     'BTN DE CONFIRMACIÓN DE NOMBRES
     Private Sub BtnNom_Click(sender As Object, e As EventArgs) Handles BtnNom.Click
-        opciones.setNomJugador(CmbNom.SelectedItem, TxtNom.Text)
+        opciones.setNomJugador(CmbNom.SelectedIndex, TxtNom.Text)
         TxtNom.Text = ""
     End Sub
     'CMB DE SELECCIÓN DE NOMBRES
     Private Sub CmbNom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbNom.SelectedIndexChanged
-        TxtNom.Text = opciones.getNomJugador(CmbNom.SelectedItem - 1)
+        If opciones.getContinuar = True Then
+            TxtNom.Text = opciones.getNomJugadorPartida(CmbNom.SelectedItem - 1)
+        Else
+            TxtNom.Text = opciones.getNomJugador(CmbNom.SelectedItem - 1)
+        End If
         BtnNom.Enabled = True
     End Sub
     'BTN DE SALIR

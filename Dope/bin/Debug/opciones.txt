@@ -1,7 +1,8 @@
-Lol
+Me
 Raiola
 Neymar
 Bronzetti
 Carvajal
-False
-False
+True
+True
+2

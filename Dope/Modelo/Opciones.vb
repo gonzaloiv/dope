@@ -15,6 +15,7 @@
     Private dineroInicial As Integer = 20
 
     'NOMBRES
+    Dim NOM_JUGADORES_PARTIDA() As String = {"", "", "", "", ""}
     Dim NOM_JUGADORES() As String = {"Mendes", "Raiola", "Neymar", "Bronzetti", "Carvajal"}
     Dim NOM_LUGARES() As String = {"Liga", "Premier", "Calcio", "Bundesliga", "Ligue 1"}
     Dim NOM_CATEGORIAS() As String = {"Alevín", "Infantil", "Cadete", "Juvenil", "Senior"}
@@ -88,13 +89,20 @@
     'NOMBRES
     'Setter para jugador por índice
     Sub setNomJugador(n As Integer, nom As String)
-        NOM_JUGADORES(n - 1) = nom
+        NOM_JUGADORES(n) = nom
+    End Sub
+    Sub setNomJugadorPartida(n As Integer, nom As String)
+        NOM_JUGADORES_PARTIDA(n) = nom
     End Sub
 
     'Getters para nombres
     Function getNomJugador(n As Integer)
         Return NOM_JUGADORES(n)
     End Function
+    Function getNomJugadorPartida(n As Integer)
+        Return NOM_JUGADORES_PARTIDA(n)
+    End Function
+
     Function getNomCategoria(n As Integer)
         Return NOM_CATEGORIAS(n)
     End Function
