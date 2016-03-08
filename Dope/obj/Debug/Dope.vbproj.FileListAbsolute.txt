@@ -40,3 +40,7 @@ E:\dope-master\Dope\bin\Debug\Fifa Wars.xml
 E:\dope-master\Dope\obj\Debug\Fifa Wars.exe
 E:\dope-master\Dope\obj\Debug\Fifa Wars.pdb
 E:\dope-master\Dope\obj\Debug\Dope.Main.resources
+E:\dope\Dope\bin\Debug\Fifa Wars.exe.config
+E:\dope\Dope\obj\Debug\Fifa Wars.exe
+E:\dope\Dope\obj\Debug\Fifa Wars.xml
+E:\dope\Dope\obj\Debug\Fifa Wars.pdb

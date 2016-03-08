@@ -64,6 +64,8 @@ Public Class Main
             opciones.setContinuar(True)
             controlador.guardarDatosPartida()
         End If
+        'Se cierra el programa al cerrar el formulario
+        End
     End Sub
 
     'OPERACIONES
