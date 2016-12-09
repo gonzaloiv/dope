@@ -288,8 +288,9 @@ paket-files/
 __pycache__/
 *.pyc
 
-# OS X
+# OS
 .DS_Store
+.vs/
 
 # Cake - Uncomment if you are using it
 # tools/
